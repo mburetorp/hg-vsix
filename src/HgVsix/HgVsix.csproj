@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <RootNamespace>HgVsix</RootNamespace>
+    <UseWPF>true</UseWPF>
+
+    <!-- VSIX settings -->
+    <VSSDKBuildToolsAutoSetup>true</VSSDKBuildToolsAutoSetup>
+    <GeneratePkgDefFile>true</GeneratePkgDefFile>
+
+    <!-- Fire and forget tasks use FileAndForget which this analyzer does not recognize -->
+    <NoWarn>$(NoWarn);VSSDK007</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectCapability Include="CreateVsixContainer" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\..\LICENSE" Link="LICENSE" IncludeInVSIX="true" />
+
+    <!-- Added by the Microsoft.VisualStudio.Shell.Styles package and not needed at runtime -->
+    <Content Remove="$(NuGetPackageRoot)microsoft.visualstudio.shell.styles\**\NativeMethods.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="HgVsixPackage.vsct" />
+    <VSCTCompile Include="HgVsixPackage.vsct" ResourceName="Menus.ctmenu" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.SDK" Version="18.11.1036" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.VSSDK.BuildTools" Version="18.11.1034" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Design" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HgVsix.Core\HgVsix.Core.csproj" />
+  </ItemGroup>
+
+</Project>

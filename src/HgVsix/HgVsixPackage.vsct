@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct" />
+
+  <Commands package="guidHgVsixPackage">
+    <Groups>
+      <Group guid="guidHgVsixCommandSet" id="EditorContextGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN" />
+      </Group>
+      <Group guid="guidHgVsixCommandSet" id="ToolsMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidHgVsixCommandSet" id="CompareWithParentCommand" priority="0x0100" type="Button">
+        <Parent guid="guidHgVsixCommandSet" id="EditorContextGroup" />
+        <Icon guid="ImageCatalogGuid" id="CompareFiles" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Compare with Mercurial Parent</ButtonText>
+          <CanonicalName>.HgVsix.CompareWithMercurialParent</CanonicalName>
+          <LocCanonicalName>.HgVsix.CompareWithMercurialParent</LocCanonicalName>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <CommandPlacements>
+    <CommandPlacement guid="guidHgVsixCommandSet" id="CompareWithParentCommand" priority="0x0100">
+      <Parent guid="guidHgVsixCommandSet" id="ToolsMenuGroup" />
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <Symbols>
+    <GuidSymbol name="guidHgVsixPackage" value="{b3a4e6c2-8d51-4f7e-a0c9-5e2b7d1f4a63}" />
+    <GuidSymbol name="guidHgVsixCommandSet" value="{e7c1f9a2-4b3d-4e8f-9a6c-1d2b3c4e5f70}">
+      <IDSymbol name="EditorContextGroup" value="0x1020" />
+      <IDSymbol name="ToolsMenuGroup" value="0x1021" />
+      <IDSymbol name="CompareWithParentCommand" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

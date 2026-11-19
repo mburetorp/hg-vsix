@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <!-- Keep all build output under build\ at the repo root, out of the source folders -->
+  <PropertyGroup>
+    <HgVsixBuildRoot>$(MSBuildThisFileDirectory)build\</HgVsixBuildRoot>
+    <BaseOutputPath>$(HgVsixBuildRoot)bin\$(MSBuildProjectName)\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(HgVsixBuildRoot)obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <VSTestResultsDirectory>$(HgVsixBuildRoot)TestResults\</VSTestResultsDirectory>
+  </PropertyGroup>
+</Project>
